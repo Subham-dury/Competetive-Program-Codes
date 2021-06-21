@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end)
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -152,39 +155,25 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
+ 	ll r1,r2,c1,c2,d1,d2;
+ 	cin>>r1>>r2;
+ 	cin>>c1>>c2;
+ 	cin>>d1>>d2;
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+ 	ll a,b,c,d;
+ 	b=(r1-d1+c2)/2;
+ 	a=r1-b;
+ 	c=d2-b;
+ 	d=c2-b;
 
+ 	if(a!=b and a!=c and a!=d and b!=c and b!=d and c!=d and a>=1 and a<=9 and b>=1 and b<=9 and c>=1 and c<=9 and d>=1 and d<=9 
+ 		and a+b==r1 and a+c==c1 and a+d==d1 and b+c==d2 and b+d==c2 and c+d==r2)
+ 	{
+ 		cout<<a<<" "<<b<<"\n";
+ 		cout<<c<<" "<<d;
+ 	}
+ 	else
+ 		cout<<-1;
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

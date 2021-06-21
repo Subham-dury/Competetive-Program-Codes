@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end)
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -151,40 +154,56 @@ int bs(string arr[],string x,ll n){
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
- 	
+ 	ll t;
+   cin>>t;
+   while(t--)
+   {
+       ll n,k;
+       cin>>n>>k;
+       string s;
+       cin>>s;
+       ll sum=0;
+       f(i,0,n-1)
+       {
+       	if(s[i]==s[i+1])
+       		sum+=2;
+       	else
+       		sum+=1;
+       }
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+       
+       ll pos;
+       vec ar(k);
+       f(i,0,k)
+       {
+       	cin>>ar[i];
+       }
 
+       f(i,0,k)
+       {
+       		pos=ar[i];
+       		
+       		if(s[pos-1]=='0')
+       			s[pos-1]='1';
+       		else if(s[pos-1]=='1')
+       			s[pos-1]='0';
+
+       		if(s[pos-1]==s[pos-2] and (pos-2)>=0 and (pos-2)<n)
+       			sum+=1;
+       		else if(s[pos-1]!=s[pos-2] and (pos-2)>=0 and (pos-2)<n)
+       			sum-=1;
+
+
+       		if(s[pos-1]==s[pos] and (pos)<n and (pos)>=0)
+       			sum+=1;
+       		else if(s[pos-1]!=s[pos] and (pos)<n and (pos)>=0)
+       			sum-=1;
+       		
+       		cout<<sum<<"\n";
+       }
+
+   }
+ 	
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

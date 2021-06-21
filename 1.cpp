@@ -4,7 +4,7 @@ using namespace std;
 #define vec vector<ll>
 #define vecs vector<string>
 #define ul unsigned long long
-#define pair pair<ll,ll>
+#define pairs pair<ll,ll>
 #define pq_max priority_queue<ll>
 #define pq_min priority_queue<ll,vi,greater<ll> >
 #define f(i,j,n) for(ll i = j; i < n; ++i)
@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end())
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -151,6 +154,7 @@ int bs(string arr[],string x,ll n){
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
+ 	
  	
 
     #ifndef ONLINE_JUDGE 

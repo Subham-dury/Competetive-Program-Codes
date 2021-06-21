@@ -152,39 +152,22 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
-
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
+ 	ll ar[5][5];
+ 	ll x=0,y=0;
+ 	for(ll i=0;i<5;i++)
  	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+ 		for(ll j=0;j<5;j++){
+ 			cin>>ar[i][j];
+ 		
+ 			if(ar[i][j]==1){
+ 				x=i;
+ 				y=j;
+ 			}
+ 		}
 
+ 	}
+ 	ll v=abs(2-x)+abs(2-y);
+ 	cout<<v; 	
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

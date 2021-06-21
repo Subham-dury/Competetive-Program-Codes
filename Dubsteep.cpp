@@ -152,39 +152,32 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
-
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
  	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+	char s[201];
+    int a,b,i,j,k;
+    cin>>s;
+    k = strlen(s);
+    a = 0;
+    b = 0;
+    for(i = 0; i < k; i++){
+        if(s[i]=='W'&&s[i+1]=='U'&&s[i+2]=='B'){
+            if(b != 0&&a != 1)
+                printf(" ");
+            i = i + 2;
+            // a case where the control for two or more WUB; a = 1
+        }
+        else{
+            printf("%c",s[i]);
+            b = 1;
+            a = 0;
+        }
+    }
+    printf("\n");
 
+
+
+
+ 	
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

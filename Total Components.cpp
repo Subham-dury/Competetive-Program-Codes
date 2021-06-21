@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end)
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -152,38 +155,46 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
+	ll t;
+	cin>>t;
+	set<ll> s1;
+    for(ll i=2;i<=N;i+=2)
+    s1.insert(i);
+  
+   for(ll i=3;i<=N;i++)
+   {
+       if(i%2==0)
+       continue;
+       else
+       {
+           for(ll j=i+1;j<=N;j*=j)
+           {
+               if(__gcd(i,j)>1)
+               {
+                   
+                   if(s1.count(i))
+                   s1.insert(j);
+                   else if(s1.count(j))
+                   s1.insert(i);
+               }
+           }
+       }
+   	}
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+   	while(t--)
+   	{
+   		ll n;
+   		cin>>n;
+   		ll sum=0;
+   		f(i,2,n+1)
+   		{
+   			if(s1.count(i))
+   				sum++;
+   		}
+
+   		cout<<(sum+(n-sum))<<endl;
+   	}
+
 
 
     #ifndef ONLINE_JUDGE 
@@ -194,4 +205,50 @@ int main(int argc, char const *argv[]) {
 }
 
 
- 
+ #include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main()
+{
+    
+   
+   ll t;
+   cin>>t;
+   while(t--)
+   {
+       ll n;
+       cin>>n;
+       set<ll> s1;
+    for(ll i=2;i<=n;i+=2)
+    s1.insert(i);
+  ll k=2;
+   for(ll i=3;i<=n;i++)
+   {
+   		k=2;
+       if(i%2==0)
+       continue;
+       else
+       {
+           for(ll j=i+1;j<=n;)
+           {
+               if(__gcd(i,j)>1)
+               {
+                   
+                   if(s1.count(i))
+                   s1.insert(j);
+                   else if(s1.count(j))
+                   s1.insert(i);
+               }
+               j*=k;
+               k++;
+           }
+       }
+   }
+       
+       
+       cout<<(1+(n-1-s1.size()))<<endl;
+   }
+   
+   return 0;
+}

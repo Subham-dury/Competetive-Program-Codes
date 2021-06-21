@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end())
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -152,39 +155,67 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
-
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
+ 	ll t;
+ 	cin>>t;
+ 	while(t--)
  	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
+ 		ll n,m;
+ 		cin>>n>>m;
+ 		vec ar(n);
+ 		f(i,0,n)cin>>ar[i];
+ 		ll prefix[n],suffix[n];
+ 		memset(prefix,0,sizeof(prefix));
+ 		memset(suffix,0,sizeof(suffix));
+
+ 		bool flag=false;
+ 		prefix[0]=0;
+ 		
+ 		if(ar[0]==1)
+ 			flag=true;
+
+ 		f(i,1,n)
+ 		{
+ 			if(ar[i]==1){
+ 				prefix[i]=0;
+ 				if(!flag) flag=true;
+ 			}
+ 			else
+ 			{
+ 				if(flag) prefix[i]=prefix[i-1]+1;
+ 				else prefix[i]=-1;
+ 			}
+ 		}
+
+ 		flag=false;
+ 		rev(i,n-1,1)
+ 		{
+ 			if(ar[i]==2){
+ 				suffix[i]=0;
+ 				if(!flag)flag=true;
+ 			}
+ 			else
+ 			{
+ 				if(flag) suffix[i]=suffix[i+1]+1;
+ 				else suffix[i]=-1; 				
+ 			}
+ 		}
+
+ 		ll x;
+ 		while(m--)
+ 		{
+ 			cin>>x;
+ 			if(prefix[x-1]==-1)
+ 				cout<<suffix[x-1]<<" ";
+ 			else if(suffix[x-1]==-1)
+ 				cout<<prefix[x-1]<<" ";
+ 			else if(prefix[x-1]!=-1 and suffix[x-1]!=-1)
+ 				cout<<min(prefix[x-1],suffix[x-1])<<" ";
+ 		}
+
+ 		cout<<endl;
+ 		
  	}
  	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
-
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

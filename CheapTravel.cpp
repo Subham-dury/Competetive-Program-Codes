@@ -152,39 +152,25 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
-
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
+ 	ll n,m,a,b;
+ 	cin>>n>>m>>a>>b;
+ 	ll k=0,cost1=0,cost2=0;
+ 	cost2+=(n*a);
+ 	if(n>=m)
  	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
+ 		k=n/m;
+ 		n=n%m;
  	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
+ 	cost1+=(b*k);
+ 	if(n>0)
  	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
+ 		if((n*a)<b)
+ 			cost1+=(n*a);
+ 		else
+ 			cost1+=b;
  	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
-
+ 	if(cost1>=cost2)cout<<cost2;
+ 	else cout<<cost1;
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end())
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -152,38 +155,38 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
-
+ 	vec ar(4);
+ 	ll a,b,c,d;
  	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
+ 	f(i,0,4)
  	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
+ 		cin>>s;
+ 		ar[i]=s.length()-2;
+ 		
  	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
+
+ 	ll ca=0,cb=0,cc=0,cd=0;
  	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+ 	if((ar[0]>=2*ar[1] and ar[0]>=2*ar[2] and ar[0]>=2*ar[3])or(ar[0]<=ar[1]/2 and ar[0]<=ar[2]/2 and ar[0]<=ar[3]/2))
+ 		ca++;
+ 	else if((ar[1]>=2*ar[0] and ar[1]>=2*ar[2] and ar[1]>=2*ar[3])or(ar[1]<=ar[0]/2 and ar[1]<=ar[2]/2 and ar[1]<=ar[3]/2))
+ 		cb++;
+ 	else if((ar[3]>=2*ar[1] and ar[3]>=2*ar[2] and ar[3]>=2*ar[0])or(ar[3]<=ar[1]/2 and ar[3]<=ar[2]/2 and ar[3]<=ar[0]/2))
+ 		cd++;
+ 	else if((ar[2]>=2*ar[1] and ar[2]>=2*ar[3] and ar[2]>=2*ar[0])or(ar[2]<=ar[1]/2 and ar[2]<=ar[3]/2 and ar[2]<=ar[0]/2))
+ 		cc++;
+
+ 	if(ca==1 and cc==0 and cb==0 and cd==0)
+ 		cout<<"A"<<endl;
+ 	else if(ca==0 and cb==1 and cc==0 and cd==0)
+ 		cout<<"B"<<endl;
+ 	else if(ca==0 and cb==0 and cc==1 and cd==0)
+ 		cout<<"C"<<endl;
+ 	else if(ca==0 and cb==0 and cc==0 and cd==1)
+ 		cout<<"D"<<endl;
+ 	else cout<<"C"<<endl;
+
+
 
 
     #ifndef ONLINE_JUDGE 

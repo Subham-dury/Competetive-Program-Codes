@@ -153,38 +153,17 @@ int main(int argc, char const *argv[]) {
 	file_i_o();
  	
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
 
+ 	ll n, k, l, c, d, p, nl, np;
+ 	cin>>n>>k>>l>>c>>d>>p>>nl>>np;
+
+ 	ll drink=(k*l)/nl;
+ 	ll slice=d*c;
+ 	ll salt=p/np;
+ 	ll mini=min(drink,min(slice,salt));
+ 	cout<<mini/n;
+
+ 	
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

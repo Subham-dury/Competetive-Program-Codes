@@ -14,9 +14,12 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end())
 const ll N = 1e5+10;
 ll hsh[N];
-
+vector<ll> ans;
  
  
  
@@ -146,45 +149,33 @@ int bs(string arr[],string x,ll n){
 	//convert string to lower or upper
 	//transform(a.begin(), a.end(), a.begin(), ::tolower)
 	//transform(b.begin(), b.end(), b.begin(), ::toupper)
+	
+	ll getvalue(vec &ar,ll n,ll sum1,ll sum2,ll i)
+	{
+		if(i==n)
+		{
+			return max(sum1,sum2);
+		}
+
+		ll l1=getvalue(ar,n,sum1+ar[i],sum2,i+1);
+		ll l2=getvalue(ar,n,sum1,sum2+ar[i],i+1);
+		return min(l1,l2);
+	}
 
 
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
+	ll n;
+	cin>>n;
+	vec ar(n);
+	f(i,0,n)cin>>ar[i];
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
+	sort(ar);
+	ll v=getvalue(ar,n,0,0,0);
+	cout<<v;
  	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
-
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

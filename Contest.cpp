@@ -152,38 +152,23 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
+ 	ll a,b,c,d;
+ 	cin>>a>>b>>c>>d;
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+ 	ll point1=(a-(a/250)*c);
+ 	ll point2=(b-(b/250)*d);
+ 	ll point3=(3*a)/10;
+ 	ll point4=(3*b)/10;
+
+ 	ll p=max(point1,point3);
+ 	ll q=max(point2,point4);
+
+ 	if(p>q)
+ 		cout<<"Misha";
+ 	else if(p<q)
+ 		cout<<"Vasya";
+ 	else
+ 		cout<<"Tie";
 
 
     #ifndef ONLINE_JUDGE 

@@ -152,38 +152,70 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
+ 		
+	ll n,m;
+	cin>>n>>m;
+	
+	ll count=0;
+	char ar[n][m];
+	ll nofcells=0;
+	f(i,0,n)
+	{
+		
+		f(j,0,m)
+		{
+			
+			cin>>ar[i][j];
+			if(ar[i][j]=='.')
+			{
+				count++;
+			}
+		}
+		
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+		if(count==m)
+		{
+			f(j,0,m)
+			{
+				ar[i][j]='E';
+			}
+			
+		}
+		count=0;
+		
+	}
+	
+	f(j,0,m)
+	{
+		f(i,0,n)
+		{
+
+			if(ar[i][j]=='.' or ar[i][j]=='E')
+			{
+				count++;
+			}
+		}
+		if(count==n)
+		{
+			
+			f(i,0,n)
+			{
+				ar[i][j]='E';
+			}
+		}
+		count=0;
+	}
+
+	f(i,0,n)
+	{
+		f(j,0,m)
+		{
+			if(ar[i][j]=='E')
+			nofcells++;	
+		}
+		
+	}
+	cout<<nofcells;
 
 
     #ifndef ONLINE_JUDGE 

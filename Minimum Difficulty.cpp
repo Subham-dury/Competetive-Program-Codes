@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
@@ -152,38 +153,33 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
+ 	
+	ll n;
+	cin>>n;
+	ll ar[n];
+	f(i,0,n)cin>>ar[i];
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+	ll maxi=1000000;
+	f(i,1,n-1)
+	{
+		ll getval=0;
+		f(j,0,n-1)
+		{
+			if(j==i)
+				continue;
+			if(j+1==i){
+				getval=max(getval,(ar[j+2]-ar[j]));
+				continue;
+			}
+			getval=max(getval,(ar[j+1]-ar[j]));
+			
+		}
+		
+		maxi=min(getval,maxi);
+	}
+
+	
+	cout<<maxi;
 
 
     #ifndef ONLINE_JUDGE 

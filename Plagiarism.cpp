@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end)
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -152,39 +155,34 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
-
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
+ 	ll t;
+ 	cin>>t;
+ 	while(t--)
  	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
+ 		ll n,m,k;
+ 		cin>>n>>m>>k;
+ 		set<ll> s1;
+ 		set<ll> ans;
+ 		ll x;
+ 		f(i,0,k)
+ 		{
+ 			cin>>x;
+ 			if(x>=1 and x<=n)
+ 			{
+ 				if(s1.count(x))
+ 					ans.insert(x);
+ 				else
+ 					s1.insert(x);
+ 			}
+ 			
+ 		}
+ 		cout<<ans.size()<<" ";
+ 		for(auto it : ans)
+ 		{
+ 			cout<<it<<" ";
+ 		}
+ 		cout<<"\n";
  	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
-
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

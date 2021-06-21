@@ -153,38 +153,31 @@ int main(int argc, char const *argv[]) {
 	file_i_o();
  	
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+	ll n;
+	cin>>n;
+	vec ar(n+1,0);
+	ll f=0;
+	ll p;
+	cin>>p;
+	ll a[p];
+	f(i,0,p) {cin>>a[i]; ar[a[i]]=1;}
+	ll q;
+	cin>>q;
+	ll b[q];
+	f(i,0,q) {cin>>b[i]; ar[b[i]]=1;}
 
+	f(i,1,n+1)
+	{
+		if(ar[i]==0)
+		{
+			f=1;break;
+		}
+	}
+	if(f==0)
+		cout<<"I become the guy.";
+	else
+		cout<<"Oh, my keyboard!";
+ 	
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

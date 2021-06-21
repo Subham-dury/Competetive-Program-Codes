@@ -14,6 +14,9 @@ using namespace std;
 #define ff first
 #define ss second
 #define mid(l,r) (l+(r-l)/2)
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+#define sort(ar) sort(ar.begin(), ar.end)
 const ll N = 1e5+10;
 ll hsh[N];
 
@@ -152,39 +155,37 @@ int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 	file_i_o();
  	
+ 	ll n;
+ 	cin>>n;
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
+ 	ll ar[n];
+ 	f(i,0,n)
  	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
+ 		cin>>ar[i];
  	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
 
+ 	ll minival=1e5+10;
+ 	ll id1,id2;
+
+ 	f(i,0,n-1)
+ 	{
+ 		if(abs(ar[i]-ar[i+1])<minival)
+ 		{
+ 			minival=abs(ar[i]-ar[i+1]);
+ 			id1=i;
+ 			id2=i+1;
+ 		}
+ 	}
+
+ 	if(abs(ar[n-1]-ar[0])<minival)
+ 	{
+ 		id1=n-1;
+ 		id2=0;
+ 	}
+
+ 	cout<<id1+1<<" "<<id2+1<<endl;
+
+ 	
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();

@@ -153,38 +153,31 @@ int main(int argc, char const *argv[]) {
 	file_i_o();
  	
 
- 	string s;
- 	string b;
- 	cin>>s;
- 	ll c1 = 0,c2 = 0,c3 = 0;
- 	for(ll i=0;i<s.length();i++)
- 	{
- 		if(s[i]=='1')c1++;
- 		else if(s[i]=='2')c2++;
- 		else if(s[i]=='3')c3++;
- 	}
- 	if(c1>0){
- 		b.push_back('1');
- 		b.push_back('+');
- 		c1--;
- 	}
- 	
- 	while(c1--)
- 	{
- 	 	b.push_back('1');
- 	 	b.push_back('+');
- 	}
- 	while(c2--){
- 		b.push_back('2');
- 		b.push_back('+');	
- 	} 
- 	while(c3--){ b.push_back('3');
- 		b.push_back('+');
- 	}
- 	
- 		b.pop_back();
- 	cout<<b;
+ 	ll x1,y1,x2,y2;
+ 	cin>>x1>>y1>>x2>>y2;
+ 	ll x3,y3,x4,y4;
+ 	 ll dx=abs(x1-x2);
+        ll dy=abs(y1-y2);
+        if(dx==dy)
+            cout<<x1<<" "<<y2<<" "<<x2<<" "<<y1<<"\n";
+         else if(x1==x2)
+        {
+            x3=x4=x1+abs(y1-y2);
+            y3=y1;
+            y4=y2;
+            cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4<<endl;
+        }
+        else if(y1==y2)
+        {
+            y3=y4=y1+abs(x1-x2);
+            x3=x1;
+            x4=x2;
+            cout<<x3<<" "<<y3<<" "<<x4<<" "<<y4<<endl;
+        }
+        else
+            cout<<-1<<endl;
 
+ 	
 
     #ifndef ONLINE_JUDGE 
 	  clock_t end = clock();
